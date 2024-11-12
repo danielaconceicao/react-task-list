@@ -75,7 +75,7 @@ export default function AppMain(){
     ];
 
     const completedTask = tasks.filter(task => task.state === 'completed');
-    /* const currentTask = tasks.filter(task => task.state !== 'completed'); */
+    const currentTask = tasks.filter(task => task.state !== 'completed');
 
     return (
         <main>
@@ -84,9 +84,21 @@ export default function AppMain(){
                 <section className="tasks">
                     {completedTask.map((product, id) => 
                     <>
-                        <h4 key={id}>{product.title}</h4>
+                        <h4 key={id}>{product.title} <span>{product.state}</span></h4>
                         <p>Priority {product.priority}</p>
                         <p>Est. time {product.estimatedTime}</p>
+                    </>)}
+                </section>
+            </div>
+            <hr></hr>
+            <div className="currentTask">
+                <h2>Current Tasks ({currentTask.length})</h2>
+                <section className="task">
+                    {currentTask.map((product, id) => 
+                    <>
+                    <h4 key={id}>{product.title} <span>{product.state}</span></h4>
+                    <p>Priority {product.priority}</p>
+                    <p>Est. time {product.estimatedTime}</p>
                     </>)}
                 </section>
             </div>
