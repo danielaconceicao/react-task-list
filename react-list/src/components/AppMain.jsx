@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 export default function AppMain(){
     /* const contentBody = "welcome to my react app"; */
 
@@ -82,28 +84,28 @@ export default function AppMain(){
             <div className="completedTask">
                 <h2>Completed Tasks ({completedTask.length})</h2>
                 <section className="tasks">
-                    {completedTask.map((product, id) => 
-                    <>
-                        <h4 key={id}>{product.title} <span>{product.state}</span></h4>
-                        <p>Priority {product.priority}</p>
-                        <p>Est. time {product.estimatedTime}</p>
-                    </>)}
+                    {completedTask.map((product) => 
+                        <Fragment key={product.id}>
+                            <h4>{product.title} <span>{product.state}</span></h4>
+                            <p>Priority {product.priority}</p>
+                            <p>Est. time {product.estimatedTime}</p>
+                        </Fragment>)}
                 </section>
             </div>
+
             <hr></hr>
+
             <div className="currentTask">
                 <h2>Current Tasks ({currentTask.length})</h2>
                 <section className="task">
-                    {currentTask.map((product, id) => 
-                    <>
-                    <h4 key={id}>{product.title} <span>{product.state}</span></h4>
-                    <p>Priority {product.priority}</p>
-                    <p>Est. time {product.estimatedTime}</p>
-                    </>)}
+                    {currentTask.map((product) => 
+                    <Fragment key={product.id}>
+                        <h4>{product.title} <span>{product.state}</span></h4>
+                        <p>Priority {product.priority}</p>
+                        <p>Est. time {product.estimatedTime}</p>
+                    </Fragment>)}
                 </section>
             </div>
         </main>
-
     )
-    
 }
